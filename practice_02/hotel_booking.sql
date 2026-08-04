@@ -1,4 +1,4 @@
---SELECT version();
+SELECT version();
 
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS customers;
@@ -28,7 +28,7 @@ CREATE TABLE bookings (
 	hotel_id	INT	NOT NULL REFERENCES hotels(id) ON DELETE cascade,
 	customer_id	INT	NOT NULL REFERENCES customers(id) ON DELETE cascade,
 	check_in	DATE	NOT null,
-	check_out	DATE	NOT NULL CHECK (check_out > check_in),
+	check_out	DATE	NOT NULL,
 	total_price	NUMERIC(10,2)	NOT NULL CHECK (total_price > 0)
 	CONSTRAINT chk_dates CHECK (check_out > check_in)
 );
